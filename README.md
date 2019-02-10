@@ -38,3 +38,8 @@ API's are secured. Use **user** as username and password with role **USER**
    - Go to CheckoutApplication.java file and run it. It will initilise all the necessary things required to run the project.
    - Run queries(mock_data_setup.txt) attached to create mock data in order to test API's
    - Use POSTMAN collection OR Swagger to invoke API's.
+   
+   **NOTES**
+   - API which is returning flight schedule is not consodering whether seats are available or not. It simply returning all the details including fare for number of seats.
+   - Assuming flight number is integer only
+   - For API where search is possible on id, name and description will return all the available flights if none of the option provided
