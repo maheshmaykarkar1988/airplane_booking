@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "0a5d314f-ded3-4dd6-8440-cf1ce5136a8b",
+		"name": "Booking Application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Search Flights based on id, name or description",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/service/flights/search?searchKey=UI",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"service",
+						"flights",
+						"search"
+					],
+					"query": [
+						{
+							"key": "searchKey",
+							"value": "UI"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Checks flight schedule for given origin, destination and departure date",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "user",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/service/flights/schedule?origin=UIA&destination=AMS&classType=BUSINESS&seatCount=4&departureDate=2019-02-12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"service",
+						"flights",
+						"schedule"
+					],
+					"query": [
+						{
+							"key": "origin",
+							"value": "UIA"
+						},
+						{
+							"key": "destination",
+							"value": "AMS"
+						},
+						{
+							"key": "classType",
+							"value": "BUSINESS"
+						},
+						{
+							"key": "seatCount",
+							"value": "4"
+						},
+						{
+							"key": "departureDate",
+							"value": "2019-02-12"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Checks whether any  fare offer associated with given origin and destination combination",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "user",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/service/flights/offers?origin=UIA&destination=AMS",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"service",
+						"flights",
+						"offers"
+					],
+					"query": [
+						{
+							"key": "origin",
+							"value": "UIA"
+						},
+						{
+							"key": "destination",
+							"value": "AMS"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
