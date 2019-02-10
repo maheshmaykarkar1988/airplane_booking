@@ -2,7 +2,7 @@
 Online airplane_booking
 
 # Swagger & POSTMAN Collection
-**Retail Online checkout Counter.postman_collection.json** (attached)
+**Booking Application.postman_collection** (attached)
 
 **http://localhost:8080/service/swagger-ui.html#/**
 
