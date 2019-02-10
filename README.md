@@ -28,6 +28,7 @@ API's are secured. Use **user** as username and password with role **USER**
 
 - **Steps to Build and run locally**
    - Create a directory with whatever name you want
+   - Go to that directory and execute below step
    - Clone the project using git command **git clone https://github.com/maheshmaykarkar1988/airplane_booking.git**
    - Intall MySQL on your machine if its not there.
    - Create database
