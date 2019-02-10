@@ -1,0 +1,20 @@
+insert into country values ("UK","United Kingdom(UK)");
+insert into country values ("FRA","France");
+insert into country values ("NET","Netherlands");
+
+insert into airport values("AMS","Netherlands","Netherlands International airport","Schipole International Airport","NET");
+insert into airport values("FIA","France","France International airport","Paris International Airport","FRA");
+insert into airport values("UIA","UK","UK International airport","Heathrow International Airport","UK");
+
+insert into jet values (1,"KLM","International");
+insert into jet values (2,"British Airways","International");
+insert into jet values (3,"Luftansa","International");
+
+insert into flight_schedule values(111,'18:15','13:15','2019-02-12',"AMS",1,"UIA");
+insert into flight_schedule values(222,'09:45','10:45','2019-02-12',"FIA",2,"AMS");
+insert into flight_schedule values(333,'10:45','14:35','2019-02-12',"UIA",2,"FIA");
+
+insert into flight_offer values(1,"2019-02-05","OFQ",25,"2019-02-09",111);
+
+insert into jet_seat_class values (1,"BUSINESS",100,111);
+insert into jet_seat_class values (2,"BUSINESS",200,222);
