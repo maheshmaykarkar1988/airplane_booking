@@ -37,7 +37,7 @@ public class FlightManagementEndPoint {
             @ApiResponse(code = 200, message = "OK", response = FlightDetailsResponse.class),
             @ApiResponse(code = 422, message = "Please enter origin"),
             @ApiResponse(code = 422, message = "Please enter destination")
-    }
+        }
     )
     public ResponseEntity getFlightDetails(@Valid @RequestParam(required = true) String origin, @RequestParam(required = true) String destination, @RequestParam(required = true) String departureDate, @RequestParam(defaultValue = "ECONOMY") String classType, @RequestParam(defaultValue = "1") Integer seatCount) {
         FlightDetailsResponse flightDetails = flightManagementService.getFlightDetails(origin, destination, departureDate, classType, seatCount);
@@ -51,9 +51,9 @@ public class FlightManagementEndPoint {
             @ApiResponse(code = 422, message = "Please enter origin"),
             @ApiResponse(code = 422, message = "Please enter destination"),
             @ApiResponse(code = 204, message = "No offeres were found"),
-    }
+        }
     )
-    public ResponseEntity getOffers(@Valid @RequestParam(required = true) String origin, @RequestParam(required = true) String destination){
+    public ResponseEntity getOffers(@Valid @RequestParam(required = true) String origin, @RequestParam(required = true) String destination) {
         FlightOfferResponse flightOffers = flightManagementService.getFlightOffers(origin, destination);
         return new ResponseEntity<FlightOfferResponse>(flightOffers, HttpStatus.OK);
     }
@@ -62,11 +62,10 @@ public class FlightManagementEndPoint {
     @ApiOperation(value = "Returns all possible results based on searchkey i.e. id , name a or description of an airport.It will return all airport details if nothing has been provided in search", response = AirportDetailsResponse.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK", response = AirportDetailsResponse.class)
-    }
+        }
     )
     public ResponseEntity getAirportDetails(@Valid @RequestParam(required = true) String searchKey) {
         AirportDetailsResponse airportDetails = flightManagementService.getAirportListBySearchCriteria(searchKey);
         return new ResponseEntity<AirportDetailsResponse>(airportDetails, HttpStatus.OK);
-
     }
 }

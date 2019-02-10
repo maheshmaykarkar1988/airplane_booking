@@ -15,5 +15,5 @@ import java.util.List;
 public class FlightDetailsResponse {
 
 
-    List<FlightDetailsWrapper> flightDetailsWrappers;
+    List<FlightDetailsWrapper> flightDetails;
 }

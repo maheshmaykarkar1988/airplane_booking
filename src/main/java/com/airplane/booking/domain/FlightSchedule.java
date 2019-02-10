@@ -7,7 +7,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-
 /**
  * Entity class to represent FlightSchedule details
  * Created by Mahesh Maykarkar on 09/02/19.

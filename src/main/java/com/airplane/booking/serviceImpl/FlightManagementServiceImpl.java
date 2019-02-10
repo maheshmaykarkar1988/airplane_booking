@@ -55,6 +55,9 @@ public class FlightManagementServiceImpl implements FlightManagementService {
     @Value("${departureDate.error.message}")
     private String departureDateErrorMessage;
 
+    @Value("${departureDate.invalid.error.message}")
+    private String invalidDepartureDateErrorMessage;
+
     @Value("${departure.date.format}")
     private String departureDateFormat;
 
@@ -68,6 +71,15 @@ public class FlightManagementServiceImpl implements FlightManagementService {
     private String offerNotFoundErrorMessage;
 
 
+    /**
+     * Returns all flight details so that use can go ahead and book the ticket
+     * @param origin
+     * @param destination
+     * @param departureDate
+     * @param classType
+     * @param seatCount
+     * @return {@Link FlightDetailsResponse}
+     */
     @Transactional
     @Override
     public FlightDetailsResponse getFlightDetails(String origin, String destination, String departureDate, String classType, int seatCount) {
@@ -88,10 +100,15 @@ public class FlightManagementServiceImpl implements FlightManagementService {
         }).collect(Collectors.toList());
 
         FlightDetailsResponse flightDetailsResponse = new FlightDetailsResponse();
-        flightDetailsResponse.setFlightDetailsWrappers(flightDetailsWrappers);
+        flightDetailsResponse.setFlightDetails(flightDetailsWrappers);
         return flightDetailsResponse;
     }
 
+    /**
+     * Perform sanity checking
+     * @param origin
+     * @param destination
+     */
     private void performValidation(String origin, String destination) {
         if (StringUtils.isEmpty(origin)) {
             throw new BookingValidationException(originErrorMessage);
@@ -102,6 +119,12 @@ public class FlightManagementServiceImpl implements FlightManagementService {
         }
     }
 
+    /**
+     * Return flight offer for given origin and destination
+     * @param origin
+     * @param destination
+     * @return {@link FlightOfferResponse}
+     */
     @Transactional
     @Override
     public FlightOfferResponse getFlightOffers(String origin, String destination) {
@@ -124,6 +147,11 @@ public class FlightManagementServiceImpl implements FlightManagementService {
         return flightOfferResponse;
     }
 
+    /**
+     * Perform data validation based on date format
+     * @param departureDate
+     * @return
+     */
     private Date getSQLDate(String departureDate) {
         if (StringUtils.isEmpty(departureDate)) {
             throw new BookingValidationException(departureDateErrorMessage);
@@ -133,14 +161,24 @@ public class FlightManagementServiceImpl implements FlightManagementService {
         java.sql.Date sqlDate = null;
         try {
             java.util.Date date = sdf.parse(departureDate);
-            sqlDate = new Date(date.getTime());
+            if (sdf.format(date).equals(departureDate.trim())) {
+                sqlDate = new Date(date.getTime());
+                return sqlDate;
+            }else{
+                throw new BookingValidationException(invalidDepartureDateErrorMessage);
+            }
+
         } catch (ParseException e) {
             logger.info(departureDateErrorMessage);
-            throw new IllegalArgumentException(departureDateErrorMessage);
+            throw new BookingValidationException(invalidDepartureDateErrorMessage);
         }
-        return sqlDate;
     }
 
+    /**
+     * Perform search operation based in search key
+     * @param searchText
+     * @return {@link AirportDetailsResponse}
+     */
     @Transactional
     @Override
     public AirportDetailsResponse getAirportListBySearchCriteria(String searchText) {

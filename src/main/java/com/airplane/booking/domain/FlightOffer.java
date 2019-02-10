@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-
 /**
  * Entity class to represent FlightOffer details
  * Created by Mahesh Maykarkar on 09/02/19.
